@@ -1,3 +1,79 @@
 site_name: Lumner的haven
 theme:
   name: material
+  icon:
+    logo: material/github     #网站logo更改
+  language: zh                #语言更改
+  palette:                    #明暗模式和颜色更改
+    - media: "(prefers-color-scheme: light)"  #明
+      scheme: default
+      primary: blue                           #导航栏颜色
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    - media: "(prefers-color-scheme: dark)"   #暗
+      scheme: slate
+      primary: grey                           #导航栏颜色
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode       
+  features:
+    - navigation.tabs         #顶部分类标签
+    - navigation.top          #返回顶部按钮
+    - search.highlight        #搜索结果高亮
+    - content.code.copy       #代码块右上角的复制按钮
+copyright: Copyright © 2026~2026 Lumner All Rights Reserved #版权声明
+# Markdown 扩展 (核心部分，对应你的 .md 语法需求)
+markdown_extensions:
+  # 目录支持
+  - toc:
+      permalink: true # 生成锚点链接
+  # --- 对应你的“其他操作”：数学公式 ---
+  - pymdownx.arithmatex:
+      generic: true
+  # --- 对应你的“代码”部分 ---
+  - pymdownx.highlight:
+      anchor_linenums: true # 代码行号
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite # 行内代码高亮
+  - pymdownx.superfences  # 支持复杂的代码块嵌套
+  - pymdownx.snippets     # 支持代码片段导入
+  # --- 对应你的“列表” -> todolist ---
+  - pymdownx.tasklist:
+      custom_checkbox: true # 漂亮的复选框样式
+  # --- 对应你的“段落” -> 字体设置 ---
+  - pymdownx.betterem:    # 优化粗体和斜体
+      smart_enable: all
+  - pymdownx.caret:       # 支持上标 ^^text^^ 和下划线
+  - pymdownx.mark:        # 支持高亮 ==text==
+  - pymdownx.tilde:       # 支持删除线 ~~text~~
+  # --- 对应你的“段落” -> 脚注 ---
+  - footnotes
+  # --- 对应你的“图片” (允许调整大小) ---
+  - attr_list # 允许使用 {: width="300" } 语法调整图片
+  # --- 额外增强 ---
+  - admonition # 漂亮的提示框 (!!! note)
+  - pymdownx.details # 折叠详情
+  - md_in_html
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+plugins:
+  - search
+  - ezlinks:      # <-- 使用这个新插件
+#额外的 JavaScript (用于数学公式渲染)
+extra_javascript:
+  - javascripts/mathjax.js # 必须是你自己创建的那个本地文件
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+extra_css:
+  - stylesheets/extra.css  # 新增：用于给表格加横线
+
+nav:
+- 首页:
+  - 欢迎: 首页文章\欢迎来到我的网站.md
+- mkdocs网站搭建教程:
+  - 我的markdown学习笔记: mkdocs网站搭建教程\我的markdown学习笔记.md
+  - 网站搭建教程: mkdocs网站搭建教程\mkdocs-github网站搭建教程.md
