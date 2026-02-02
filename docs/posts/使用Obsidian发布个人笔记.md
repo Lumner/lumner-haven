@@ -24,6 +24,7 @@ category: mkdocs网站搭建教程
 1. 依次输入GitHub username，Repository name，GitHub token（你刚复制的那串字符）  
 2. Main branch选择main  
 3. 点击下方test connection检查，右上角报绿就连接成功了  
+4. 关掉Automatically merge pull requests（gemini一开始没告诉我，我一直是错的，可以ctrl shift i调出来把console的报错扔给AI让它解释怎么改）  
 #### File paths  
 1. File tree in repository选择property key，这样以后方便设计索引  
 2. 在docs下新建文件夹posts用于存放文章  
