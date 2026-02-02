@@ -1,6 +1,6 @@
 ---
 share: true
-category: mkdocs网站搭建教程
+category: posts/mkdocs网站搭建教程
 ---
 # Markdown Learning { : style="text-align: center;color:blue" }  
   
