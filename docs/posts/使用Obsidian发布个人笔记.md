@@ -1,6 +1,6 @@
 ---
 share: true
-category: mkdocs网站搭建教程
+category: posts/mkdocs网站搭建教程
 ---
 # 配置 MkDocs 以兼容 Obsidian 语法  
 ### 安装插件  
@@ -35,6 +35,64 @@ category: mkdocs网站搭建教程
 #### Attachment & embeds  
 - Default attachment folder写docs/assets(如果没有就建一个assets文件夹)  
 ### 发布文章  
+#### 前置准备  
+这个我一开始没弄，搞了很久(Vscode里面改了之后可以用Vscode里面的源代码管理上传，也不强求在两个地方都写)  
+1. 在项目文件夹下（可以同时看到docs和mkdocs.yml）建一个requirements.txt，在Github仓库中也要  
+2. requirements.txt中输入  
+```  
+mkdocs-material  
+mkdocs-awesome-pages-plugin  
+mkdocs-ezlinks-plugin  
+```  
+3. 终端运行  
+```  
+pip install -r requirements.txt  
+```  
+4. 在.yml中添加如下代码  
+```  
+plugins:  
+  - search  
+  - ezlinks  
+  - awesome-pages  
+```  
+5. 在Github仓库中的code页面再建一个文件夹，名称为：`.github/workflows/publish.yml`,注意前面还有个点  
+文件中输入：  
+```  
+name: Publish to GitHub Pages  
+  
+on:  
+  push:  
+    branches:  
+      - main  # 盯着你的 main 分支，一旦有变动就开始工作  
+  
+permissions:  
+  contents: write  
+  
+jobs:  
+  deploy:  
+    runs-on: ubuntu-latest  
+    steps:  
+      - uses: actions/checkout@v4  
+        
+      - name: Configure Git Credentials  
+        run: |  
+          git config user.name github-actions[bot]  
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com  
+            
+      - uses: actions/setup-python@v5  
+        with:  
+          python-version: 3.x  
+            
+      - name: Install dependencies  
+        # 这里会读取你之前建的 requirements.txt 安装插件  
+        # 如果你没建 requirements.txt，会自动安装基础包  
+        run: |  
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install mkdocs-material mkdocs-awesome-pages-plugin; fi  
+            
+      - name: Deploy site  
+        # 这一步把 Markdown 变成 HTML 并推送到 gh-pages 分支  
+        run: mkdocs gh-deploy --force  
+```  
 #### 正常步骤  
 1. 在文章开头输入以下代码  
 ```  
@@ -46,14 +104,14 @@ share: true
 3. 输入关键词Enveloppe，选择`Upload single current active note` (发布当前文件)  
 然后等待即Github Actions变绿即可  
 #### 设置快捷键  
+- 还是要输入上面那个代码  
 1. 打开Obsidian设置  
 2. 在左侧找到快捷键（Hotkeys）  
 3. 在搜索框中输入Enveloppe  
 4. 选择`Upload single current active note`  
 5. 输入喜欢的快捷键就好，我的是`Alt S`  
+#### 一些问题  
+-   
 #### 索引设置  
-![p1.jpg](assetsp1.jpg)![p2.jpg](assetsp2.jpg)![p3.jpg](assetsp3.jpg)  
-- 上面的插件需要你再终端运行  
-```  
-pip install -r requirements.txt  
-```  
+![p1.jpg](docsassetsp1.jpg)![p2.jpg](docsassetsp2.jpg)![p3.jpg](docsassetsp3.jpg)  
+  
