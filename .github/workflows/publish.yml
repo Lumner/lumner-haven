@@ -1,0 +1,34 @@
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # 盯着你的 main 分支，一旦有变动就开始工作
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+          
+      - name: Install dependencies
+        # 这里会读取你之前建的 requirements.txt 安装插件
+        # 如果你没建 requirements.txt，会自动安装基础包
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; else pip install mkdocs-material mkdocs-awesome-pages-plugin; fi
+          
+      - name: Deploy site
+        # 这一步把 Markdown 变成 HTML 并推送到 gh-pages 分支
+        run: mkdocs gh-deploy --force
