@@ -1,4 +1,5 @@
 site_name: Lumner的haven
+site_url: https://Lumner.github.io/lumner-haven/
 theme:
   name: material
   icon:
