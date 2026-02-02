@@ -65,12 +65,7 @@ markdown_extensions:
   - pymdownx.blocks.admonition # 关键：支持 Obsidian 的 > [!info] 语法
 plugins:
   - search
-  - ezlinks:
-      wikilinks:
-        enabled: true
-        fast_mode: true   # 开启高性能模式
-        strip_anchor: false
-      warn_on_dead_links: true # 如果有死链，构建时会警告你
+  - ezlinks
   - awesome-pages
 #额外的 JavaScript (用于数学公式渲染)
 extra_javascript:
