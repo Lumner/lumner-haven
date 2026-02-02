@@ -76,9 +76,3 @@ extra_javascript:
 extra_css:
   - stylesheets/extra.css  # 新增：用于给表格加横线
 
-nav:
-- 首页:
-  - 欢迎: 首页文章\欢迎来到我的网站.md
-- mkdocs网站搭建教程:
-  - 我的markdown学习笔记: mkdocs网站搭建教程\我的markdown学习笔记.md
-  - 网站搭建教程: mkdocs网站搭建教程\mkdocs-github网站搭建教程.md
