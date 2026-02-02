@@ -23,6 +23,8 @@ theme:
     - navigation.top          #返回顶部按钮
     - search.highlight        #搜索结果高亮
     - content.code.copy       #代码块右上角的复制按钮
+    - navigation.instant      #让网站像单页应用一样快
+    - navigation.tracking
 copyright: Copyright © 2026~2026 Lumner All Rights Reserved #版权声明
 # Markdown 扩展 (核心部分，对应你的 .md 语法需求)
 markdown_extensions:
@@ -60,9 +62,16 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.blocks.admonition # 关键：支持 Obsidian 的 > [!info] 语法
 plugins:
   - search
-  - ezlinks:      # <-- 使用这个新插件
+  - ezlinks:
+      wikilinks:
+        enabled: true
+        fast_mode: true   # 开启高性能模式
+        strip_anchor: false
+      warn_on_dead_links: true # 如果有死链，构建时会警告你
+  - awesome-pages
 #额外的 JavaScript (用于数学公式渲染)
 extra_javascript:
   - javascripts/mathjax.js # 必须是你自己创建的那个本地文件
