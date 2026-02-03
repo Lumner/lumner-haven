@@ -71,7 +71,7 @@ plugins:
 #额外的 JavaScript (用于数学公式渲染)
 extra_javascript:
   - javascripts/mathjax.js # 必须是你自己创建的那个本地文件
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.staticfile.net/mathjax/3.2.2/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 extra_css:
   - stylesheets/extra.css  # 新增：用于给表格加横线
